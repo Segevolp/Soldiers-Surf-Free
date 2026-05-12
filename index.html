@@ -4,6 +4,22 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Soldiers Surf Free — In Memory of Ido Aviv</title>
+<template id="__bundler_thumbnail">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+    <defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#0a4a5e"/>
+        <stop offset="1" stop-color="#1d8aa6"/>
+      </linearGradient>
+    </defs>
+    <rect width="400" height="400" fill="url(#bg)"/>
+    <g stroke="#f6f4ef" stroke-width="9" stroke-linecap="round" fill="none" opacity="0.95">
+      <path d="M120 230 Q150 200 180 230 T240 230 T300 230"/>
+      <path d="M120 200 Q150 170 180 200 T240 200 T300 200" opacity="0.7"/>
+      <path d="M120 170 Q150 140 180 170 T240 170 T300 170" opacity="0.45"/>
+    </g>
+  </svg>
+</template>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -238,8 +254,148 @@
   }
   .vc-stat-num small { font-size: 14px; color: color-mix(in oklch, var(--foam) 60%, transparent); margin-left: 4px; }
 
-  /* large surfboard svg */
+  /* ido photo carousel inside hero visual-card */
+  .visual-card { cursor: pointer; user-select: none; }
+  .visual-card:hover .ido-photo.active { transform: scale(1.03); }
+  .ido-photos { position: absolute; inset: 0; overflow: hidden; border-radius: inherit; }
+  .ido-photo {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; opacity: 0; transition: opacity .55s ease, transform 1.2s ease;
+    transform: scale(1);
+  }
+  .ido-photo.active { opacity: 1; }
+  .visual-card-inner { z-index: 2; }
+  .visual-card-inner::before {
+    content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit;
+    background: linear-gradient(180deg,
+      color-mix(in oklch, var(--abyss) 30%, transparent) 0%,
+      color-mix(in oklch, var(--abyss) 10%, transparent) 35%,
+      color-mix(in oklch, var(--abyss) 75%, transparent) 100%);
+  }
+  .ido-quote {
+    font-family: 'Fraunces', serif; font-style: italic; font-size: 26px;
+    color: var(--foam); margin-bottom: 20px; max-width: 78%; line-height: 1.25;
+    text-shadow: 0 2px 18px color-mix(in oklch, var(--abyss) 70%, transparent);
+  }
+  /* dashboards section */
+  #dashboards { background: var(--paper); padding: 110px 0; }
+  .dash-hero {
+    display: grid; grid-template-columns: 1.3fr 1fr; gap: 36px; align-items: center;
+    margin: 44px 0 64px;
+  }
+  @media (max-width: 980px) { .dash-hero { grid-template-columns: 1fr; } }
+  .dash-hero-img img {
+    width: 100%; border-radius: 22px; display: block;
+    box-shadow: 0 30px 60px -30px color-mix(in oklch, var(--abyss) 35%, transparent);
+    border: 1px solid color-mix(in oklch, var(--abyss) 10%, transparent);
+  }
+  .dash-hero-copy p { font-size: 16px; line-height: 1.6; color: color-mix(in oklch, var(--abyss) 78%, transparent); margin: 14px 0; }
+  .dash-hero-copy .bf-title { font-size: 28px; margin-top: 8px; }
+  .dash-role { margin-top: 56px; }
+  .dash-role-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 22px; flex-wrap: wrap; }
+  .dash-role-head h3 { font-family: 'Fraunces', serif; font-size: 26px; font-weight: 500; color: var(--abyss); }
+  .dash-pill {
+    font-family: 'JetBrains Mono', monospace; font-size: 12px;
+    padding: 6px 12px; border-radius: 999px;
+    background: color-mix(in oklch, var(--abyss) 8%, transparent);
+    color: var(--abyss); letter-spacing: 0.02em;
+  }
+  .dash-pill.soldier { background: color-mix(in oklch, var(--ocean) 16%, transparent); color: var(--ocean); }
+  .dash-pill.manager { background: color-mix(in oklch, oklch(0.55 0.14 78) 18%, transparent); color: oklch(0.45 0.16 60); }
+  .dash-pill.admin   { background: color-mix(in oklch, oklch(0.55 0.18 28) 18%, transparent); color: oklch(0.45 0.18 28); }
+  .dash-screens { display: grid; gap: 22px; }
+  .dash-screens-2 { grid-template-columns: repeat(2, 1fr); }
+  .dash-screens-3 { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 980px) { .dash-screens-2, .dash-screens-3 { grid-template-columns: 1fr; } }
+  .dash-screens figure {
+    margin: 0; border-radius: 16px; overflow: hidden;
+    background: var(--foam);
+    border: 1px solid color-mix(in oklch, var(--abyss) 10%, transparent);
+    box-shadow: 0 20px 40px -24px color-mix(in oklch, var(--abyss) 30%, transparent);
+    display: flex; flex-direction: column;
+    transition: transform .3s ease;
+  }
+  .dash-screens figure:hover { transform: translateY(-3px); }
+  .dash-screens figure img {
+    width: 100%; display: block; aspect-ratio: 4 / 3; object-fit: cover; object-position: top center;
+    background: color-mix(in oklch, var(--abyss) 6%, transparent);
+  }
+  .dash-screens figcaption {
+    padding: 16px 18px; font-size: 13.5px; line-height: 1.5;
+    color: color-mix(in oklch, var(--abyss) 72%, transparent);
+    border-top: 1px solid color-mix(in oklch, var(--abyss) 8%, transparent);
+  }
+  .dash-screens figcaption strong { color: var(--abyss); font-weight: 600; }
+
+  /* built section — real lockers + hardware diagram */
+  #built {
+    background:
+      radial-gradient(60% 50% at 12% 0%, color-mix(in oklch, var(--sky) 30%, transparent), transparent 60%),
+      radial-gradient(60% 50% at 100% 100%, color-mix(in oklch, var(--sand) 35%, transparent), transparent 65%),
+      var(--foam);
+    padding: 110px 0;
+    position: relative;
+  }
+  .built-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 28px;
+    margin-top: 44px;
+  }
+  @media (max-width: 980px) { .built-grid { grid-template-columns: 1fr; } }
+  .built-locker, .built-hardware {
+    margin: 0;
+    border-radius: 22px;
+    overflow: hidden;
+    background: var(--foam);
+    border: 1px solid color-mix(in oklch, var(--abyss) 10%, transparent);
+    box-shadow:
+      0 30px 60px -30px color-mix(in oklch, var(--abyss) 35%, transparent),
+      0 0 0 1px color-mix(in oklch, var(--abyss) 4%, transparent) inset;
+    display: flex; flex-direction: column;
+    transition: transform .35s ease, box-shadow .35s ease;
+  }
+  .built-locker:hover, .built-hardware:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 44px 80px -30px color-mix(in oklch, var(--abyss) 45%, transparent),
+      0 0 0 1px color-mix(in oklch, var(--abyss) 6%, transparent) inset;
+  }
+  .built-locker img, .built-hardware img {
+    width: 100%; display: block;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: color-mix(in oklch, var(--abyss) 8%, transparent);
+  }
+  .built-hardware img { object-fit: contain; background: oklch(0.98 0.005 220); padding: 14px; }
+  .built-locker figcaption, .built-hardware figcaption {
+    padding: 26px 28px 28px;
+    display: flex; flex-direction: column; gap: 10px;
+    border-top: 1px solid color-mix(in oklch, var(--abyss) 8%, transparent);
+  }
+  .bf-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--ocean);
+  }
+  .bf-title {
+    font-family: 'Fraunces', serif;
+    font-size: 24px; line-height: 1.2; color: var(--abyss);
+    font-weight: 500;
+  }
+  .bf-body { font-size: 15px; line-height: 1.55; color: color-mix(in oklch, var(--abyss) 75%, transparent); }
+  .bf-body strong { color: var(--abyss); font-weight: 600; }
+  .bf-meta {
+    display: flex; flex-wrap: wrap; gap: 6px 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: color-mix(in oklch, var(--abyss) 55%, transparent);
+    margin-top: 4px;
+  }
+  .bf-meta span:nth-child(even) { opacity: 0.5; }
+
+  /* large surfboard svg (legacy, unused) */
   .surfboard {
+    display: none;
     position: absolute; right: -40px; top: 50%; transform: translateY(-50%) rotate(18deg);
     width: 70%; max-width: 320px; opacity: 0.95;
     pointer-events: none;
@@ -332,7 +488,9 @@
     font-family: 'Space Grotesk'; font-size: 26px; font-weight: 600;
     color: var(--foam); margin-bottom: 18px;
     background: linear-gradient(160deg, var(--wave), var(--abyss));
+    overflow: hidden;
   }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .member h4 { font-size: 19px; margin-bottom: 4px; }
   .member-role {
     font-family: 'JetBrains Mono', monospace; font-size: 11.5px;
@@ -560,6 +718,30 @@
     border: 1px dashed var(--line-strong);
   }
   .screenshot-body .ss-tag { font-size: 11px; opacity: 0.7; margin-top: 6px; }
+  .screenshot-img {
+    display: block; width: 100%; aspect-ratio: 16/9;
+    object-fit: cover; object-position: top center;
+    border-radius: 10px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+  }
+  .screenshot-img.square {
+    aspect-ratio: 1/1;
+    object-fit: contain;
+    object-position: center;
+    padding: 6px;
+    background:
+      linear-gradient(var(--paper), var(--paper)) padding-box,
+      repeating-linear-gradient(45deg,
+        color-mix(in oklch, var(--wave) 8%, transparent) 0 8px,
+        color-mix(in oklch, var(--wave) 3%, transparent) 8px 16px);
+  }
+  .screenshot-caption {
+    display: block;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px;
+    color: var(--ink-mute); letter-spacing: 0.04em; text-transform: uppercase;
+    margin-top: 10px; padding-left: 4px;
+  }
 
   /* ============ ARCHITECTURE ============ */
   #architecture {
@@ -669,8 +851,10 @@
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#team">Team</a>
+      <a href="#built">Built</a>
       <a href="#video">Demo</a>
       <a href="#docs">Docs</a>
+      <a href="#dashboards">Dashboards</a>
       <a href="#manual">Manual</a>
       <a href="#try" class="nav-cta">Try it →</a>
     </div>
@@ -719,39 +903,30 @@
       </div>
 
       <div class="dedication-wrap">
-        <div class="visual-card">
-          <!-- big abstract surfboard svg -->
-          <svg class="surfboard" viewBox="0 0 200 600" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <linearGradient id="board" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0" stop-color="oklch(0.96 0.02 220)"/>
-                <stop offset="1" stop-color="oklch(0.85 0.06 78)"/>
-              </linearGradient>
-              <linearGradient id="stripe" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0" stop-color="oklch(0.45 0.13 230)"/>
-                <stop offset="1" stop-color="oklch(0.30 0.10 230)"/>
-              </linearGradient>
-            </defs>
-            <path d="M100 10 C 150 80, 175 250, 175 380 C 175 480, 145 575, 100 590 C 55 575, 25 480, 25 380 C 25 250, 50 80, 100 10 Z" fill="url(#board)" stroke="oklch(0.30 0.05 230)" stroke-width="2"/>
-            <path d="M97 30 L97 560 L103 560 L103 30 Z" fill="url(#stripe)" opacity="0.85"/>
-            <circle cx="100" cy="540" r="8" fill="oklch(0.30 0.10 230)"/>
-            <path d="M50 200 Q 100 195 150 200" stroke="oklch(0.30 0.05 230)" stroke-width="1.5" fill="none" opacity="0.5"/>
-            <path d="M45 350 Q 100 345 155 350" stroke="oklch(0.30 0.05 230)" stroke-width="1.5" fill="none" opacity="0.5"/>
-          </svg>
-
+        <div class="visual-card" id="idoCarousel" role="button" tabindex="0" aria-label="Click to see another photo of Ido">
+          <div class="ido-photos">
+            <img class="ido-photo active" src="https://static.wixstatic.com/media/a24c52_794578d9e27446c6b2ea6dbbbacc0f4c~mv2.jpeg/v1/fit/w_800,h_1000,q_90/a24c52_794578d9e27446c6b2ea6dbbbacc0f4c~mv2.jpeg" alt="Ido Aviv" />
+            <img class="ido-photo" src="https://static.wixstatic.com/media/a24c52_c2e897fa50664cd8802845e00f07545d~mv2.jpg/v1/fill/w_800,h_1000,fp_0.49_0.42,q_90/a24c52_c2e897fa50664cd8802845e00f07545d~mv2.jpg" alt="Ido Aviv" />
+            <img class="ido-photo" src="https://static.wixstatic.com/media/a24c52_03ce811264744908bb86655809287df5~mv2.jpeg/v1/fit/w_800,h_1000,q_90/a24c52_03ce811264744908bb86655809287df5~mv2.jpeg" alt="Ido Aviv" />
+            <img class="ido-photo" src="https://static.wixstatic.com/media/a24c52_57c7093f655d457d9fcbda90ac35d241~mv2.jpg/v1/fit/w_800,h_1000,q_90/a24c52_57c7093f655d457d9fcbda90ac35d241~mv2.jpg" alt="Ido Aviv" />
+            <img class="ido-photo" src="https://static.wixstatic.com/media/a24c52_dea49bb3184948a6a1e5cfe82ebb0039~mv2.jpg/v1/fit/w_800,h_1000,q_90/a24c52_dea49bb3184948a6a1e5cfe82ebb0039~mv2.jpg" alt="Ido Aviv" />
+            <img class="ido-photo" src="https://static.wixstatic.com/media/a24c52_8fd2cea5874942cd980afde2aec08b4b~mv2.jpg/v1/fit/w_800,h_1000,q_90/a24c52_8fd2cea5874942cd980afde2aec08b4b~mv2.jpg" alt="Ido Aviv" />
+            <img class="ido-photo" src="https://static.wixstatic.com/media/a24c52_50505ae692a8405c8132d858b9116498~mv2.jpg/v1/fit/w_800,h_1000,q_90/a24c52_50505ae692a8405c8132d858b9116498~mv2.jpg" alt="Ido Aviv" />
+            <img class="ido-photo" src="https://static.wixstatic.com/media/a24c52_1ec6ccf0fe92435284f6943efee66f80~mv2.jpeg/v1/fit/w_800,h_1000,q_90/a24c52_1ec6ccf0fe92435284f6943efee66f80~mv2.jpeg" alt="Ido Aviv" />
+          </div>
           <div class="visual-card-inner">
             <span class="vc-tag">
               <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><circle cx="5" cy="5" r="4"/></svg>
-              Live system
+              In memory of Ido Aviv · 1995–2024
             </span>
             <div>
-              <div style="font-family: 'Fraunces', serif; font-style: italic; font-size: 26px; color: var(--foam); margin-bottom: 20px; max-width: 78%; line-height: 1.25;">
-                "אתה חייל? בטח אחי, קח גלשן. סומך עליך."
+              <div class="ido-quote">
+                "תנו חיוך, הכל יסתדר"
               </div>
               <div class="vc-stats">
                 <div class="vc-stat">
-                  <div class="vc-stat-num">24<small>/7</small></div>
-                  <div class="vc-stat-lbl">Self-service unlock</div>
+                  <div class="vc-stat-num" id="idoPhotoIdx">1<small>/8</small></div>
+                  <div class="vc-stat-lbl">Tap photo for another</div>
                 </div>
                 <div class="vc-stat">
                   <div class="vc-stat-num">∞</div>
@@ -762,6 +937,25 @@
           </div>
         </div>
       </div>
+      <script>
+        (function(){
+          var card = document.getElementById('idoCarousel');
+          if (!card) return;
+          var photos = card.querySelectorAll('.ido-photo');
+          var counter = document.getElementById('idoPhotoIdx');
+          var idx = 0;
+          function next(){
+            photos[idx].classList.remove('active');
+            idx = (idx + 1) % photos.length;
+            photos[idx].classList.add('active');
+            if (counter) counter.innerHTML = (idx+1) + '<small>/' + photos.length + '</small>';
+          }
+          card.addEventListener('click', next);
+          card.addEventListener('keydown', function(e){
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); next(); }
+          });
+        })();
+      </script>
     </div>
   </div>
 
@@ -792,8 +986,8 @@
     <div class="about-grid">
       <div class="about-copy">
         <p>Ido used to hand his surfboard to any soldier who walked up. <em>"Take a surfboard, I trust you."</em> We built this system to let that gesture scale — across cities, beaches, and the years to come.</p>
-        <p>Soldiers Surf Free is an end-to-end platform: a flexible backend, a microcontroller-driven locker, an OCR pipeline that reads IDF cards, and a Wix-integrated frontend that lives on Ido's memorial site. The platform is generic by design — different items, different sites, different cities can all plug in over time.</p>
-        <p>The project is being delivered with our customer Gil Hurvitz, with sponsorship from Wix, as a 2025–2026 senior project at the Faculty of Engineering, Ben-Gurion University of the Negev.</p>
+        <p>Soldiers Surf Free is an end-to-end platform: a flexible backend, a microcontroller-driven locker, an OCR pipeline that reads IDF cards, and a frontend that lives on Ido's memorial site. The platform is generic by design — different items, different sites, different cities can all plug in over time.</p>
+        <p>The project is being delivered with our customer Gil Hurvitz, as a 2025–2026 senior project at the Faculty of Engineering, Ben-Gurion University of the Negev.</p>
       </div>
 
       <div class="pillars">
@@ -853,12 +1047,12 @@
 
     <div class="team-grid">
       <article class="member">
-        <div class="avatar" style="background: linear-gradient(160deg, oklch(0.55 0.13 230), oklch(0.20 0.05 240));">OY</div>
+        <div class="avatar"><img src="assets/team/ofek.jpg" alt="Ofek Yabo"/></div>
         <h4>Ofek Yabo</h4>
-        <div class="member-role">// Backend · AWS</div>
-        <p class="member-bio">FastAPI, Aurora Serverless v2, IoT message processing and the platform's permission tree.</p>
+        <div class="member-role">// Hardware · Tests</div>
+        <p class="member-bio">Hardware integration, microcontroller firmware, sensors, and the project's test suite.</p>
         <div class="member-links">
-          <a class="member-link" href="mailto:Yaboofe@post.bgu.ac.il" title="Email">
+          <a class="member-link" href="mailto:ofeky99y99@gmail.com" title="Email">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
           </a>
           <a class="member-link" href="#" title="GitHub">
@@ -868,12 +1062,12 @@
       </article>
 
       <article class="member">
-        <div class="avatar" style="background: linear-gradient(160deg, oklch(0.62 0.13 200), oklch(0.25 0.07 230));">DD</div>
+        <div class="avatar"><img src="assets/team/dolev.jpeg" alt="Dolev David"/></div>
         <h4>Dolev David</h4>
-        <div class="member-role">// Frontend · Wix</div>
-        <p class="member-bio">Wix integration, soldier and admin dashboards, reservation and review UX, donation flows.</p>
+        <div class="member-role">// Backend</div>
+        <p class="member-bio">FastAPI backend, data model, IoT message processing, and the platform's permission tree.</p>
         <div class="member-links">
-          <a class="member-link" href="mailto:DolevDav@bgu.ac.il" title="Email">
+          <a class="member-link" href="mailto:Dolev9998@gmail.com" title="Email">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
           </a>
           <a class="member-link" href="#" title="GitHub">
@@ -883,15 +1077,15 @@
       </article>
 
       <article class="member">
-        <div class="avatar" style="background: linear-gradient(160deg, oklch(0.70 0.10 215), oklch(0.30 0.08 235));">SO</div>
+        <div class="avatar"><img src="assets/team/segev.jpeg" alt="Segev Olpak"/></div>
         <h4>Segev Olpak</h4>
-        <div class="member-role">// Hardware · IoT</div>
-        <p class="member-bio">Microcontroller firmware, RFID readers, cabinet sensors, OCR pipeline for IDF cards.</p>
+        <div class="member-role">// Frontend · Backend</div>
+        <p class="member-bio">Frontend, soldier & admin dashboards, reservation and review UX, plus backend support.</p>
         <div class="member-links">
-          <a class="member-link" href="mailto:Olpak@post.bgu.ac.il" title="Email">
+          <a class="member-link" href="mailto:Segevolp@gmail.com" title="Email">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
           </a>
-          <a class="member-link" href="#" title="GitHub">
+          <a class="member-link" href="https://github.com/Segevolp" target="_blank" rel="noopener" title="GitHub">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-1.93c-3.2.7-3.87-1.54-3.87-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.74.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.78 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.59.23 2.76.11 3.05.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.13v3.16c0 .31.21.67.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
           </a>
         </div>
@@ -900,13 +1094,13 @@
       <article class="member">
         <div class="avatar" style="background: linear-gradient(160deg, oklch(0.50 0.12 240), oklch(0.18 0.05 240));">GY</div>
         <h4>Guy Yehoshua</h4>
-        <div class="member-role">// QA · Testing</div>
-        <p class="member-bio">Test suite (51 tests), pytest infrastructure, smoke tests, the borrow-flow E2E gauntlet.</p>
+        <div class="member-role">// IDF Cards · OCR · Deploy</div>
+        <p class="member-bio">IDF-card OCR pipeline, deployment & DevOps. Owns the patented card-scanning algorithm.</p>
         <div class="member-links">
-          <a class="member-link" href="mailto:Guyyeho@post.bgu.ac.il" title="Email">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
+          <a class="member-link" href="tel:+972533345483" title="Phone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           </a>
-          <a class="member-link" href="#" title="GitHub">
+          <a class="member-link" href="https://github.com/YehoGuy" target="_blank" rel="noopener" title="GitHub">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.55v-1.93c-3.2.7-3.87-1.54-3.87-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.74.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.78 0c2.21-1.49 3.18-1.18 3.18-1.18.62 1.59.23 2.76.11 3.05.74.8 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.13v3.16c0 .31.21.67.8.55C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z"/></svg>
           </a>
         </div>
@@ -920,14 +1114,55 @@
         <div style="font-size: 13.5px; color: var(--ink-soft); margin-top: 4px;">Manager, Kiryat Yam Marine Center · Ido's employer</div>
       </div>
       <div style="padding: 22px; border-radius: 16px; background: var(--paper); border: 1px solid var(--line);">
-        <div style="font-family: 'JetBrains Mono'; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 8px;">Sponsor & advisor</div>
-        <div style="font-family: 'Space Grotesk'; font-weight: 600; font-size: 17px;">Wix</div>
-        <div style="font-size: 13.5px; color: var(--ink-soft); margin-top: 4px;">Sponsoring the memorial site & frontend platform</div>
+        <div style="font-family: 'JetBrains Mono'; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 8px;">Memorial site</div>
+        <div style="font-family: 'Space Grotesk'; font-weight: 600; font-size: 17px;">idoaviv.com</div>
+        <div style="font-size: 13.5px; color: var(--ink-soft); margin-top: 4px;">The Ido Aviv memorial site where Soldiers Surf Free lives</div>
       </div>
     </div>
 
     <div style="grid-column: 1/-1;">
       <!-- spacer -->
+    </div>
+  </div>
+</section>
+
+<!-- ============ BUILT ============ -->
+<section id="built">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">Built · The real thing</div>
+        <h2>Not a render. <span class="accent">Wood, waves, and wires that work.</span></h2>
+      </div>
+      <div class="head-aside">
+        Four memorial cabinets on the Kiryat Yam shoreline — laser-engraved with Ido's name and the sunburst from his memorial — driven by a three-box IP68 hardware stack Ofek built from scratch.
+      </div>
+    </div>
+
+    <div class="built-grid">
+      <figure class="built-locker">
+        <img src="assets/lockers.jpeg" alt="Four wooden memorial lockers on the beach, one open showing a yellow-and-blue surfboard inside, each door engraved with Ido Aviv's name (1995–2024), a surfboard, mountains and waves." loading="lazy"/>
+        <figcaption>
+          <div class="bf-tag">// Site · Kiryat Yam Marine Center</div>
+          <div class="bf-title">Four lockers. One open invitation.</div>
+          <div class="bf-body">Each door is laser-engraved with עידו אביב 1995–2024 and a surfboard / mountain / wave motif — the same memorial language used across Ido's site. The open cabinet shows the sunburst board: yellow rays, blue tail, Ido's signature.</div>
+          <div class="bf-meta">
+            <span>4× cells</span><span>·</span><span>Marine-grade ply</span><span>·</span><span>Engraved doors</span><span>·</span><span>Solenoid locks</span>
+          </div>
+        </figcaption>
+      </figure>
+
+      <figure class="built-hardware">
+        <img src="assets/hardware-diagram.jpeg" alt="Three-box IP68 deployment diagram showing a central ESP32 brain hub, a sensor hub with four ultrasonic boards, and a power & lock hub with a four-channel relay, terminal block, RFID reader and four solenoid locks, connected by 8-core cables through PG9 glands." loading="lazy"/>
+        <figcaption>
+          <div class="bf-tag">// Hardware · Ofek Yabo</div>
+          <div class="bf-title">Three IP68 boxes. One soldier's tap.</div>
+          <div class="bf-body">A central <strong>ESP32 brain</strong> talks over 8-core cables to a <strong>sensor hub</strong> (4× ultrasonic presence sensors) and a <strong>power &amp; lock hub</strong> (4-channel relay, terminal block, RFID reader, 4× solenoid locks). All sealed in IP68 polycarbonate enclosures with PG9 glands, M25 field connectors and conformal-coated boards — built to live on the beach. Full 7-section deployment guide by Ofek: architecture, wire mapping, M25 tables, sealing, internal wiring, BOM.</div>
+          <div class="bf-meta">
+            <span>ESP32</span><span>·</span><span>12V→5V→3.3V</span><span>·</span><span>4× ultrasonic</span><span>·</span><span>4× relay</span><span>·</span><span>RFID</span><span>·</span><span>AWS IoT</span>
+          </div>
+        </figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -966,7 +1201,7 @@
         <h2>The website is live. The code is open.</h2>
       </div>
       <div class="head-aside">
-        Soldiers Surf Free runs as a tab inside the Ido Aviv memorial Wix site. The full backend, hardware code and frontend are on GitHub.
+        Soldiers Surf Free runs as a tab inside the Ido Aviv memorial site. The full backend, hardware code and frontend are on GitHub.
       </div>
     </div>
 
@@ -980,7 +1215,7 @@
         </div>
         <div class="lc-body">
           <h4>Visit the live website</h4>
-          <p>Open the Soldiers Surf Free tab on Ido Aviv's memorial Wix site.</p>
+          <p>Open the Soldiers Surf Free tab on Ido Aviv's memorial site.</p>
         </div>
         <div class="lc-arrow">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -993,7 +1228,7 @@
         </div>
         <div class="lc-body">
           <h4>GitHub repository</h4>
-          <p>Backend (FastAPI / Python), hardware firmware and Wix frontend code.</p>
+          <p>Backend (FastAPI / Python), hardware firmware and frontend code.</p>
         </div>
         <div class="lc-arrow">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -1109,6 +1344,17 @@
         </div>
       </a>
 
+      <a class="doc-card" href="ship/Hardware Deployment Guide.html" target="_blank" rel="noopener">
+        <div class="doc-icon" style="background: linear-gradient(160deg, oklch(0.50 0.14 230), oklch(0.32 0.10 230));">HW</div>
+        <div>
+          <h4>Hardware Deployment Guide</h4>
+        </div>
+        <div class="doc-meta"><span>7 sections</span><span class="dot"></span><span>By Ofek Yabo</span></div>
+        <div class="doc-cta">Open guide
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+
       <div class="doc-card" style="background: linear-gradient(160deg, var(--foam), var(--paper)); border-style: dashed;">
         <div class="doc-icon" style="background: var(--line-strong); color: var(--ink-mute);">+</div>
         <div>
@@ -1170,11 +1416,95 @@
       <div class="stack-card">
         <div class="stack-card-hd">// Frontend</div>
         <ul>
-          <li>Wix · JavaScript</li>
+          <li>JavaScript</li>
           <li>Soldier dashboard</li>
           <li>Site-manager console</li>
           <li>Admin permission tree</li>
         </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DASHBOARDS ============ -->
+<section id="dashboards">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="section-eyebrow">Dashboards · The frontend</div>
+        <h2>One landing page. Three roles. <span class="accent">One memorial framing.</span></h2>
+      </div>
+      <div class="head-aside">
+        Every visitor first lands on the Ido Aviv memorial page. From there, the system fans out into a role-specific dashboard — soldier, site manager, or admin — each gated by the permission tree.
+      </div>
+    </div>
+
+    <div class="dash-hero">
+      <div class="dash-hero-img"><img src="assets/screens/main-page.png" alt="Main landing page — a portrait of Ido on a skateboard with the memorial dedication: Master Sgt. (Res.) Ido Aviv, 19 Oct 1995 – 28 Apr 2024, his quote, and the Soldiers Surf For Free intro." loading="lazy"/></div>
+      <div class="dash-hero-copy">
+        <div class="bf-tag">// Step 0 · Memorial landing</div>
+        <div class="bf-title">Before any dashboard — you meet Ido.</div>
+        <p>Every user, every role, sees this page first. A 6-photo carousel of Ido, his story from Carmiel to Surf Cycle to Battalion 9232, his words <em>”תנו חיוך, הכל יסתדר“</em>, and a soft handoff into Soldiers Surf For Free. The system never lets the product forget why it exists.</p>
+        <div class="bf-meta"><span>6× photos</span><span>·</span><span>HE · EN</span><span>·</span><span>Soft scroll</span></div>
+      </div>
+    </div>
+
+    <div style="display:none" class="dash-role">
+      <div class="dash-role-head">
+        <span class="dash-pill soldier">🏄 Soldier</span>
+        <h3>Scan, reserve, surf.</h3>
+      </div>
+      <div class="dash-screens dash-screens-2">
+        <figure>
+          <img src="assets/screens/soldier-id-scan.png" alt="Soldier ID scan step — 3-step wizard (Soldier ID, Health Declaration, Liability Waiver) with an ID Scanner panel offering Start Camera and a manual-entry debug form for Military ID and Personal ID." loading="lazy"/>
+          <figcaption><strong>Soldier ID scan</strong> — the OCR pipeline reads the IDF card on-device. 3-step gate: ID → health → waiver, before any locker exists in the UI.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/screens/reservation-soldier.png" alt="Soldier reservation view — collapsible site cards (ofeks house Beer-Sheva expanded showing Ofek Surfboards locker with a surfboard in Cell 1 and a New Reservation button; Guy’s Beach Tel-Aviv, Segev’s House petah tikva, beer sheva UNI Beer sheva collapsed)." loading="lazy"/>
+          <figcaption><strong>Browse &amp; reserve</strong> — sites expand into lockers, lockers into cells. Each available item shows a New Reservation CTA. Site policy decides walk-in vs. reservation.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div style="display:none" class="dash-role">
+      <div class="dash-role-head">
+        <span class="dash-pill manager">🛟 Site Manager</span>
+        <h3>Keep the beach running.</h3>
+      </div>
+      <div class="dash-screens dash-screens-3">
+        <figure>
+          <img src="assets/screens/site-manager-dashboard.png" alt="Site Manager dashboard — Your Managed Sites listing ofeks house with Update Policy and Site Overview buttons, Ofek Surfboards locker showing Total Cells 2 with Cell 1 and Cell 2 Unlock buttons; Guy’s Beach collapsed; Segev’s House expanded with locker for my big surfboard and two cells." loading="lazy"/>
+          <figcaption><strong>Managed sites</strong> — every site this manager owns, with one-tap Unlock per cell, Reset and direct entry to Policy and Overview.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/screens/reservation-sitemanager.png" alt="Site Overview — Segev’s House. Three tabs: Reservations Calendar (active), Malfunctions 0, Reviews 0. Weekly calendar view May 10–16 2026 with day/week/month toggle and an empty grid from all-day through 1pm." loading="lazy"/>
+          <figcaption><strong>Site overview</strong> — reservations calendar with day/week/month, malfunctions queue and reviews — the manager’s single pane for one beach.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/screens/change-policy-sitemanager.png" alt="Policy modal for Segev’s House with fields for Reservation Duration, Daily/Weekly/Yearly Reservation Limits, Max Unlock Distance meters, Max Active Reservations per User, Max Daily Rentals per User, Reservation Grace Period and a toggle for Allow Walk-in Without Reservation, with Cancel and Save Policy buttons." loading="lazy"/>
+          <figcaption><strong>Update policy</strong> — every rule that gates a soldier’s unlock (GPS distance, daily/weekly/yearly caps, grace window, walk-in toggle) is per-site and editable here.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div style="display:none" class="dash-role">
+      <div class="dash-role-head">
+        <span class="dash-pill admin">⚙️ Admin</span>
+        <h3>Commission sites, grant powers, prune the tree.</h3>
+      </div>
+      <div class="dash-screens dash-screens-3">
+        <figure>
+          <img src="assets/screens/admin-dashboard.png" alt="Admin dashboard with four grouped cards: User Management (Ban User, Unban User, Manage Admin Permissions, Manage Site Manager Permissions), Inventory Management (Add Item), Site & Locker Management (Create Site, Add Locker, Delete Resources), Operations (List All Donations)." loading="lazy"/>
+          <figcaption><strong>Admin home</strong> — four operational surfaces (Users, Inventory, Sites &amp; Lockers, Operations) cleanly grouped so the destructive paths sit apart from the everyday ones.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/screens/permissions-admin.png" alt="Manage Admin Permissions screen — search by ID/name/email at top, one result card for User #2 with no email on file, Admin: No, and a green Grant Admin button." loading="lazy"/>
+          <figcaption><strong>Permission tree</strong> — grant/revoke Admin and Site Manager rights from one searchable list. Every change is audited server-side.</figcaption>
+        </figure>
+        <figure>
+          <img src="assets/screens/delete-resources-admin.png" alt="Delete Resources screen — ofeks house Beer-Sheva expanded with a Delete Site button, Ofek Surfboards locker with a Delete Locker button, View Items/Cells showing one surfboard (condition new, Cell 1) with a red trash icon; Guy’s Beach Tel-Aviv and Segev’s House petah tikva collapsed with their own Delete Site buttons." loading="lazy"/>
+          <figcaption><strong>Delete resources</strong> — nested view of every site → locker → cell → item. Deletes cascade with confirms; everything is reversible until it isn’t.</figcaption>
+        </figure>
       </div>
     </div>
   </div>
@@ -1234,25 +1564,23 @@
       <div>
         <div class="screenshot-frame">
           <div class="frame-bar"><span></span><span></span><span></span></div>
-          <div class="screenshot-body">
-            <strong>screenshot — soldier dashboard</strong>
-            <div class="ss-tag">drop into assets/manual/soldier-dashboard.png</div>
-          </div>
+          <img class="screenshot-img" src="assets/manual/soldier-main.png" alt="Soldier home — beach list and active rental">
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px;">
-          <div class="screenshot-frame" style="aspect-ratio: 1/1;">
-            <div class="frame-bar"><span></span><span></span><span></span></div>
-            <div class="screenshot-body" style="font-size: 11px;">
-              ID upload
-              <div class="ss-tag">manual/id-upload.png</div>
+        <span class="screenshot-caption">Home — find a beach, see what's open</span>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px;">
+          <div>
+            <div class="screenshot-frame">
+              <div class="frame-bar"><span></span><span></span><span></span></div>
+              <img class="screenshot-img square" src="assets/manual/id-upload.png" alt="IDF card scan and verification screen">
             </div>
+            <span class="screenshot-caption">IDF card scan</span>
           </div>
-          <div class="screenshot-frame" style="aspect-ratio: 1/1;">
-            <div class="frame-bar"><span></span><span></span><span></span></div>
-            <div class="screenshot-body" style="font-size: 11px;">
-              Reservation
-              <div class="ss-tag">manual/reservation.png</div>
+          <div>
+            <div class="screenshot-frame">
+              <div class="frame-bar"><span></span><span></span><span></span></div>
+              <img class="screenshot-img square" src="assets/manual/reservation.png" alt="Soldier reservation flow">
             </div>
+            <span class="screenshot-caption">Reserve a board</span>
           </div>
         </div>
       </div>
@@ -1293,25 +1621,23 @@
       <div>
         <div class="screenshot-frame">
           <div class="frame-bar"><span></span><span></span><span></span></div>
-          <div class="screenshot-body">
-            <strong>screenshot — site manager console</strong>
-            <div class="ss-tag">drop into assets/manual/manager-console.png</div>
-          </div>
+          <img class="screenshot-img" src="assets/manual/manager-console.png" alt="Site manager dashboard — active rentals, cells, queue">
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px;">
-          <div class="screenshot-frame" style="aspect-ratio: 1/1;">
-            <div class="frame-bar"><span></span><span></span><span></span></div>
-            <div class="screenshot-body" style="font-size: 11px;">
-              Malfunctions
-              <div class="ss-tag">manual/malfunctions.png</div>
+        <span class="screenshot-caption">Site manager dashboard</span>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px;">
+          <div>
+            <div class="screenshot-frame">
+              <div class="frame-bar"><span></span><span></span><span></span></div>
+              <img class="screenshot-img square" src="assets/manual/malfunctions.png" alt="Reservation and incident queue for site manager">
             </div>
+            <span class="screenshot-caption">Reservations & queue</span>
           </div>
-          <div class="screenshot-frame" style="aspect-ratio: 1/1;">
-            <div class="frame-bar"><span></span><span></span><span></span></div>
-            <div class="screenshot-body" style="font-size: 11px;">
-              Site policy
-              <div class="ss-tag">manual/site-policy.png</div>
+          <div>
+            <div class="screenshot-frame">
+              <div class="frame-bar"><span></span><span></span><span></span></div>
+              <img class="screenshot-img square" src="assets/manual/site-policy.png" alt="Per-site policy editor">
             </div>
+            <span class="screenshot-caption">Per-site policy</span>
           </div>
         </div>
       </div>
@@ -1352,25 +1678,23 @@
       <div>
         <div class="screenshot-frame">
           <div class="frame-bar"><span></span><span></span><span></span></div>
-          <div class="screenshot-body">
-            <strong>screenshot — admin dashboard</strong>
-            <div class="ss-tag">drop into assets/manual/admin-dashboard.png</div>
-          </div>
+          <img class="screenshot-img" src="assets/manual/admin-main.png" alt="Admin dashboard — sites, lockers, users, bans">
         </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px;">
-          <div class="screenshot-frame" style="aspect-ratio: 1/1;">
-            <div class="frame-bar"><span></span><span></span><span></span></div>
-            <div class="screenshot-body" style="font-size: 11px;">
-              Permission tree
-              <div class="ss-tag">manual/permissions.png</div>
+        <span class="screenshot-caption">Admin dashboard</span>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px;">
+          <div>
+            <div class="screenshot-frame">
+              <div class="frame-bar"><span></span><span></span><span></span></div>
+              <img class="screenshot-img square" src="assets/manual/permissions.png" alt="Hierarchical permissions editor">
             </div>
+            <span class="screenshot-caption">Permission tree</span>
           </div>
-          <div class="screenshot-frame" style="aspect-ratio: 1/1;">
-            <div class="frame-bar"><span></span><span></span><span></span></div>
-            <div class="screenshot-body" style="font-size: 11px;">
-              Inventory
-              <div class="ss-tag">manual/inventory.png</div>
+          <div>
+            <div class="screenshot-frame">
+              <div class="frame-bar"><span></span><span></span><span></span></div>
+              <img class="screenshot-img square" src="assets/manual/inventory.png" alt="Inventory and resource management">
             </div>
+            <span class="screenshot-caption">Inventory & resources</span>
           </div>
         </div>
       </div>
@@ -1415,9 +1739,9 @@
       <div class="footer-col">
         <h5>Contact</h5>
         <ul>
-          <li><a href="mailto:Yaboofe@post.bgu.ac.il">Ofek Yabo</a></li>
-          <li><a href="mailto:DolevDav@bgu.ac.il">Dolev David</a></li>
-          <li><a href="mailto:Olpak@post.bgu.ac.il">Segev Olpak</a></li>
+          <li><a href="mailto:ofeky99y99@gmail.com">Ofek Yabo</a></li>
+          <li><a href="mailto:Dolev9998@gmail.com">Dolev David</a></li>
+          <li><a href="mailto:Segevolp@gmail.com">Segev Olpak</a></li>
           <li><a href="mailto:Guyyeho@post.bgu.ac.il">Guy Yehoshua</a></li>
         </ul>
       </div>
