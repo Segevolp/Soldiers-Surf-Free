@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Soldiers Surf Free — Poster 373-25-04</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Heebo:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ocean: #0a4a5e;
+    --ocean-deep: #073544;
+    --wave: #1d8aa6;
+    --foam: #e8f4f7;
+    --foam-deep: #c9e6ed;
+    --sand: #f8f3e8;
+    --sand-deep: #efe6d0;
+    --paper: #fbfaf6;
+    --ink: #16252b;
+    --ink-soft: #3a4f57;
+    --ink-mute: #6a7f88;
+    --line: #d6cfbf;
+    --line-strong: #b9b09b;
+    --accent: #d9684a;
+    --accent-soft: #fbe3da;
+    --leaf: #356a4a;
+    --leaf-soft: #d8e8de;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: #2a2a2a;
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    min-height: 100vh;
+    display: grid;
+    place-items: start center;
+    padding: 24px;
+  }
+
+  /* Poster: 90cm × 120cm portrait (aspect 3:4).
+     Render at 1200×1600px for screen — the SVG/CSS scales cleanly for print. */
+  .poster {
+    width: 1200px;
+    min-height: 1600px;
+    background:
+      radial-gradient(120% 60% at 50% -10%, color-mix(in oklch, var(--foam) 80%, transparent) 0%, transparent 60%),
+      var(--paper);
+    color: var(--ink);
+    position: relative;
+    overflow: visible;
+    padding: 28px 30px 24px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    gap: 14px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+  }
+
+  /* Decorative wave bands (very light) */
+  .poster::before {
+    content: "";
+    position: absolute; left: 0; right: 0; top: 0; height: 240px;
+    background: linear-gradient(180deg,
+      color-mix(in oklch, var(--foam) 70%, transparent),
+      transparent);
+    pointer-events: none;
+  }
+
+  /* ============ HEADER ============ */
+  .header {
+    display: grid;
+    grid-template-columns: 110px 1fr 360px;
+    align-items: center;
+    gap: 18px;
+    border-bottom: 3px solid var(--ocean);
+    padding-bottom: 18px;
+    position: relative;
+  }
+  .pnum {
+    font-family: 'JetBrains Mono', 'Inter', monospace;
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--ocean);
+    letter-spacing: 0.02em;
+    line-height: 1.1;
+  }
+  .pnum small {
+    display: block;
+    font-size: 10px;
+    color: var(--ink-mute);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-top: 4px;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+  }
+  .fac {
+    text-align: center;
+    font-family: 'Heebo', sans-serif;
+    direction: rtl;
+    line-height: 1.3;
+  }
+  .fac-top { font-size: 18px; font-weight: 700; color: var(--ocean); display:none; }
+  .fac-bot { font-size: 15px; color: var(--ink-soft); font-weight: 500; display:none; }
+  .bgu {
+    display: flex; align-items: center; gap: 12px; justify-content: flex-end;
+    direction: rtl;
+  }
+  .bgu-mark {
+    width: 56px; height: 56px;
+    background: #ED8A2C;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    color: white; font-size: 26px;
+    flex-shrink: 0;
+  }
+  .bgu-name {
+    font-family: 'Heebo', sans-serif;
+    line-height: 1.2;
+    text-align: right;
+  }
+  .bgu-name .he { font-size: 15px; font-weight: 700; color: var(--ink); }
+  .bgu-name .he2 { font-size: 13px; font-weight: 600; color: var(--ink-soft); margin-top: 2px; }
+  .bgu-name .he3 { font-size: 13px; font-weight: 600; color: var(--ink-soft); margin-top: 2px; }
+  .bgu-name .en { font-size: 11px; color: var(--ink-soft); font-weight: 500; display:none; }
+
+  /* ============ TITLE ============ */
+  .title-block { text-align: center; padding: 8px 0 10px; border-bottom: 1px solid var(--line); }
+  .title { font-family: 'Space Grotesk', sans-serif; font-size: 42px; font-weight: 700; line-height: 1; letter-spacing: -0.02em; color: var(--ink); }
+  .title .accent { color: var(--ocean); }
+  .subtitle { font-family: 'Heebo', sans-serif; direction: rtl; font-size: 18px; font-weight: 500; color: var(--wave); margin-top: 4px; }
+  .credits { font-family: 'Inter', sans-serif; font-size: 15px; color: var(--ink-soft); margin-top: 10px; font-weight: 500; }
+  .credits strong { color: var(--ink); font-weight: 600; }
+  .credits .row { margin-top: 4px; }
+  .credits .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink-mute);
+    margin-right: 8px;
+  }
+
+  /* ============ BODY GRID ============ */
+  .body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: min-content;
+    gap: 14px;
+    align-content: start;
+  }
+  .card {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 11px 13px 13px;
+    position: relative;
+  }
+  .card.span-2 { grid-column: span 2; }
+  .card-head {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1.5px solid var(--line);
+  }
+  .card-num {
+    width: 28px; height: 28px;
+    background: var(--ocean);
+    color: var(--foam);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700; font-size: 15px;
+    flex-shrink: 0;
+  }
+  .card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 600; color: var(--ocean-deep); letter-spacing: -0.01em; }
+  .card p { font-size: 11.5px; line-height: 1.5; color: var(--ink-soft); }
+  .card p + p { margin-top: 6px; }
+  .card strong { color: var(--ink); font-weight: 600; }
+  .card ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 6px; }
+  .card ul li { font-size: 11.5px; line-height: 1.45; color: var(--ink-soft); padding-left: 16px; position: relative; }
+  .card ul li::before {
+    content: ""; width: 6px; height: 6px;
+    background: var(--wave); border-radius: 50%;
+    position: absolute; left: 4px; top: 8px;
+  }
+
+  /* color variants */
+  .card.tone-foam { background: var(--foam); border-color: var(--foam-deep); }
+  .card.tone-sand { background: var(--sand); border-color: var(--sand-deep); }
+  .card.tone-leaf { background: var(--leaf-soft); border-color: color-mix(in oklch, var(--leaf) 25%, var(--leaf-soft)); }
+  .card.tone-accent { background: var(--accent-soft); border-color: color-mix(in oklch, var(--accent) 25%, var(--accent-soft)); }
+
+  /* Step row */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .step {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 10px 10px 12px;
+    text-align: left;
+    position: relative;
+  }
+  .step-n {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700; font-size: 14px;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .step-t {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600; font-size: 13px;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+  .step-p { font-size: 11px; line-height: 1.4; color: var(--ink-soft); }
+
+  /* Hardware diagram */
+  .hw {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 16px;
+    align-items: center;
+  }
+  .hw img {
+    width: 100%; border-radius: 10px;
+    border: 1px solid var(--line);
+    background: white;
+    display: block;
+    object-fit: contain;
+    aspect-ratio: 16/10;
+  }
+  .hw-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .stat {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 8px 10px;
+  }
+  .stat-v {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700; font-size: 18px;
+    color: var(--ocean);
+  }
+  .stat-l {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-mute);
+    margin-top: 2px;
+  }
+
+  /* Tech chips */
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .chip {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 4px 11px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink);
+  }
+  .chip.s { background: var(--ocean); border-color: var(--ocean); color: var(--foam); }
+
+  /* Screens row */
+  .screens {
+    display: grid;
+    grid-template-columns: 0.85fr 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 4px;
+  }
+  .screen {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 6px;
+  }
+  .screen img {
+    width: 100%; display: block;
+    border-radius: 4px;
+    height: auto;
+    max-height: 460px;
+    object-fit: contain;
+    object-position: top center;
+    background: var(--paper);
+  }
+  .screen-l {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-align: center;
+    margin-top: 8px;
+    padding-bottom: 4px;
+  }
+
+  /* Conclusions */
+  .concls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .concl {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 10px 12px 12px;
+    position: relative;
+  }
+  .concl-icon {
+    width: 28px; height: 28px;
+    background: var(--ocean); color: var(--foam);
+    border-radius: 8px;
+    display: grid; place-items: center;
+    margin-bottom: 6px;
+  }
+  .concl-icon svg { width: 16px; height: 16px; }
+  .concl-t {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600; font-size: 13.5px;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+  .concl-p { font-size: 12px; line-height: 1.45; color: var(--ink-soft); }
+
+  /* Footer */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+    border-top: 2px solid var(--ocean);
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: var(--ink-mute);
+  }
+  .footer .left { display: flex; align-items: center; gap: 10px; }
+  .wave-mark {
+    width: 22px; height: 22px;
+    color: var(--wave);
+  }
+  .footer strong { color: var(--ink); font-weight: 600; }
+
+  /* Memorial badge */
+  .memorial {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--ocean); color: var(--foam);
+    padding: 3px 10px; border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<div class="poster">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="pnum">
+      373-26-10
+      <small>Project №</small>
+    </div>
+    <div class="fac"></div>
+    <div class="bgu">
+      <div class="bgu-name">
+        <div class="he">הפקולטה למדעי המחשב והמידע ע״ש שטיין</div>
+        <div class="he2">אוניברסיטת בן-גוריון בנגב</div>
+        <div class="he3">התוכנית להנדסת תוכנה</div>
+      </div>
+      <div class="bgu-mark">
+        <svg viewBox="0 0 40 40" style="width:32px;height:32px"><path d="M20 6 C 17 12, 13 14, 13 20 C 13 25, 16 29, 20 29 C 24 29, 27 25, 27 20 C 27 16, 24 14, 22 10 C 21 13, 19 14, 18 18 C 17 21, 19 23, 20 23 C 21 23, 22 21, 22 19" fill="white" stroke="white" stroke-width="0.5" stroke-linejoin="round"/></svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- TITLE -->
+  <section class="title-block">
+    <div class="memorial">In memory of Ido Aviv ז״ל</div>
+    <h1 class="title" style="margin-top:8px;">Soldiers Surf <span class="accent">Free</span></h1>
+    <div class="subtitle">חיילים גולשים חינם — לוּחַ גלישה לכל חייל</div>
+    <div class="credits">
+      <div class="row"><strong>Ofek Yabo</strong> &nbsp;·&nbsp; <strong>Dolev David</strong> &nbsp;·&nbsp; <strong>Segev Olpak</strong> &nbsp;·&nbsp; <strong>Guy Yehoshua</strong></div>
+      <div class="row" style="font-size:15px;margin-top:8px;">
+        <span class="label">Advisor</span> Yuval Moskovitch &nbsp;·&nbsp;
+        <span class="label">Customer</span> Gil Hurvitz, Kiryat Yam Marine Center
+      </div>
+    </div>
+  </section>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- Row 1: Background & Objective -->
+    <div class="card tone-foam">
+      <div class="card-head">
+        <div class="card-num">1</div>
+        <h3>Background &amp; Motivation</h3>
+      </div>
+      <p>Ido Aviv was head of surf coaching at the Kiryat Yam surf club. He used to hand his board to any soldier who walked up — <em>"take a surfboard, I trust you."</em></p>
+      <p>After Ido fell in the war, his family and his employer set out to scale that gesture: a way for any IDF soldier to borrow a surfboard at any participating beach — free, 24/7, with no staff on site.</p>
+    </div>
+
+    <div class="card tone-accent">
+      <div class="card-head">
+        <div class="card-num">2</div>
+        <h3>The Problem</h3>
+      </div>
+      <ul>
+        <li><strong>No staff at beaches.</strong> Boards can't be lent by hand at every site.</li>
+        <li><strong>Trust &amp; verification.</strong> Real soldiers only — without holding IDs hostage.</li>
+        <li><strong>Multi-site, multi-locker.</strong> One platform, many cities, many policies.</li>
+        <li><strong>Hardware reality.</strong> Locks, sensors and weather on the coast.</li>
+      </ul>
+    </div>
+
+    <!-- Row 2: Objective + Solution (span 2 split) -->
+    <div class="card span-2 tone-sand">
+      <div class="card-head">
+        <div class="card-num">3</div>
+        <h3>Our Solution — an end-to-end lending platform</h3>
+      </div>
+      <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:18px;align-items:start;">
+        <div>
+          <p>A soldier opens the Memorial site, signs up, and uploads their IDF card. Our OCR pipeline verifies it and stores only an encrypted hash. They pick a beach, reserve (or walk-in if allowed), and tap their card on the locker — the platform checks documents, bans, reservation and GPS in one round trip. The correct cell unlocks. They surf, return, and tap to close.</p>
+          <p style="margin-top:8px;"><strong>One brain, three roles:</strong> Soldier, Site Manager, Admin — each with their own dashboard. Permissions are hierarchical and every override is logged.</p>
+        </div>
+        <div>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.12em;color:var(--ink-mute);text-transform:uppercase;margin-bottom:6px;">Roles</div>
+          <div style="display:grid;gap:6px;">
+            <div style="background:white;border:1px solid var(--line);border-radius:8px;padding:8px 12px;">
+              <strong style="font-family:'Space Grotesk';color:var(--ocean);">Soldier</strong>
+              <div style="font-size:12px;color:var(--ink-soft);">Borrow, reserve, review.</div>
+            </div>
+            <div style="background:white;border:1px solid var(--line);border-radius:8px;padding:8px 12px;">
+              <strong style="font-family:'Space Grotesk';color:var(--ocean);">Site Manager</strong>
+              <div style="font-size:12px;color:var(--ink-soft);">Run one beach: cells, policy, malfunctions, remote unlock.</div>
+            </div>
+            <div style="background:white;border:1px solid var(--line);border-radius:8px;padding:8px 12px;">
+              <strong style="font-family:'Space Grotesk';color:var(--ocean);">Admin</strong>
+              <div style="font-size:12px;color:var(--ink-soft);">Provision sites, lockers, items; manage users, bans, donations.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 3: How a borrow works (steps) -->
+    <div class="card span-2">
+      <div class="card-head">
+        <div class="card-num">4</div>
+        <h3>How a borrow works — 6 steps, ~20 seconds</h3>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-n">01</div>
+          <div class="step-t">Sign up</div>
+          <div class="step-p">Phone + IDF card upload. OCR verifies, stores a hash.</div>
+        </div>
+        <div class="step">
+          <div class="step-n">02</div>
+          <div class="step-t">Reserve / Walk-in</div>
+          <div class="step-p">Per-site policy: reservation only, or walk-in allowed.</div>
+        </div>
+        <div class="step">
+          <div class="step-n">03</div>
+          <div class="step-t">Tap to unlock</div>
+          <div class="step-p">RFID + GPS + bans + docs checked in one call.</div>
+        </div>
+        <div class="step">
+          <div class="step-n">04</div>
+          <div class="step-t">Surf</div>
+          <div class="step-p">Cell closes. Rental clock runs against the site cap.</div>
+        </div>
+        <div class="step">
+          <div class="step-n">05</div>
+          <div class="step-t">Return</div>
+          <div class="step-p">Ultrasonic sensor confirms board is back; cell locks.</div>
+        </div>
+        <div class="step">
+          <div class="step-n">06</div>
+          <div class="step-t">Review</div>
+          <div class="step-p">Soldier reviews the site. Managers see it in their queue.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 4: Hardware + Dashboards side by side -->
+    <div class="card tone-foam">
+      <div class="card-head">
+        <div class="card-num">5</div>
+        <h3>Hardware — three IP68 boxes, one tap</h3>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <img src="assets/hardware-diagram.jpeg" alt="Three-box IP68 hardware architecture" style="width:100%;height:220px;border-radius:8px;border:1px solid var(--line);background:white;object-fit:contain;" />
+        <img src="assets/lockers.jpeg" alt="Memorial cabinets installed at Kiryat Yam shoreline" style="width:100%;height:220px;border-radius:8px;border:1px solid var(--line);background:white;object-fit:contain;" />
+      </div>
+    </div>
+
+    <!-- Row 5: Dashboards -->
+    <div class="card tone-leaf">
+      <div class="card-head">
+        <div class="card-num">6</div>
+        <h3>The system in use — three dashboards</h3>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:2px;">
+        <div class="screen" style="padding:2px;">
+          <img src="assets/manual/memorial-hero.png" alt="Memorial intro for Ido Aviv shown before every dashboard" style="max-height:200px;" />
+          <div class="screen-l" style="margin-top:2px;font-size:10px;padding-bottom:0;">Meeting Ido · before every login</div>
+        </div>
+        <div class="screen" style="padding:2px;">
+          <img src="assets/manual/soldier-new.png" alt="Soldier dashboard" style="max-height:180px;" />
+          <div class="screen-l" style="margin-top:2px;font-size:10px;padding-bottom:0;">Soldier · borrow &amp; reserve</div>
+        </div>
+        <div class="screen" style="padding:2px;">
+          <img src="assets/manual/manager-new.png" alt="Site manager dashboard" style="max-height:180px;" />
+          <div class="screen-l" style="margin-top:2px;font-size:10px;padding-bottom:0;">Site manager · run a beach</div>
+        </div>
+        <div class="screen" style="padding:2px;">
+          <img src="assets/manual/admin-new.png" alt="Admin dashboard" style="max-height:180px;" />
+          <div class="screen-l" style="margin-top:2px;font-size:10px;padding-bottom:0;">Admin · sites, users, bans</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 6: Methodology + Tech -->
+    <div class="card">
+      <div class="card-head">
+        <div class="card-num">7</div>
+        <h3>Methodology</h3>
+      </div>
+      <ul>
+        <li><strong>Requirements with the customer.</strong> ARD &amp; ADD baked from real lending edge-cases.</li>
+        <li><strong>Server-enforced policy.</strong> Every borrow re-checks docs, bans, reservation, GPS.</li>
+        <li><strong>OCR pipeline.</strong> IDF card read once, only a hash kept.</li>
+        <li><strong>Field hardware.</strong> Built &amp; tested on real Kiryat Yam cabinets.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <div class="card-num">8</div>
+        <h3>Tech Stack</h3>
+      </div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.1em;color:var(--ink-mute);text-transform:uppercase;margin-top:2px;">Frontend</div>
+      <div class="chips"><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Tailwind</span></div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.1em;color:var(--ink-mute);text-transform:uppercase;margin-top:10px;">Backend</div>
+      <div class="chips"><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span><span class="chip">SQLAlchemy</span><span class="chip">JWT</span></div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.1em;color:var(--ink-mute);text-transform:uppercase;margin-top:10px;">Hardware / IoT</div>
+      <div class="chips"><span class="chip">ESP32</span><span class="chip">MQTT</span><span class="chip">RFID</span><span class="chip">Ultrasonic</span></div>
+    </div>
+
+    <!-- Row 7: Conclusions -->
+    <div class="card span-2 tone-sand">
+      <div class="card-head">
+        <div class="card-num">9</div>
+        <h3>Conclusions &amp; Next Steps</h3>
+      </div>
+      <div class="concls">
+        <div class="concl">
+          <div class="concl-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          <div class="concl-t">End-to-end works</div>
+          <div class="concl-p">Soldier, manager, admin flows + hardware locker — verified together on real cabinets.</div>
+        </div>
+        <div class="concl">
+          <div class="concl-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+          </div>
+          <div class="concl-t">Scales to many beaches</div>
+          <div class="concl-p">Per-site policies enforced server-side; adding a beach is a config, not a fork.</div>
+        </div>
+        <div class="concl">
+          <div class="concl-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg>
+          </div>
+          <div class="concl-t">Next: scale the network</div>
+          <div class="concl-p">More cabinets, donation flow, Hebrew RTL polish, and an offline-tolerant lock firmware.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="left">
+      <svg class="wave-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 16 Q5 13 8 16 T14 16 T20 16 T22 16"/>
+        <path d="M2 12 Q5 9 8 12 T14 12 T20 12 T22 12" opacity="0.55"/>
+      </svg>
+      <span><strong>Soldiers Surf Free</strong> · senior project · Faculty of Engineering · Ben-Gurion University of the Negev · 2025–2026</span>
+    </div>
+    <div style="font-family:'JetBrains Mono',monospace;letter-spacing:0.1em;">373-25-04</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
